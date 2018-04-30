@@ -17,7 +17,7 @@ class ConstructionController extends Controller
     {
         //
         $constructions = DB::table('constructions')
-                            ->leftJoin('progresses', 'constructions.progress_id', '=', 'progresses.id')
+                            ->leftJoin('progresses', 'constructions.id', '=', 'progresses.id')
                             ->get();
         return view('construction.index', ['constructions' => $constructions]);
     }
@@ -29,7 +29,7 @@ class ConstructionController extends Controller
      */
     public function create()
     {
-        //
+        return view('construction.create');
     }
 
     /**
@@ -40,7 +40,16 @@ class ConstructionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $construction = new Construction;
+        $construction->city = $request->city;
+        $construction->address = $request->address;
+        $construction->personnel = $request->personnel;
+        $construction->launch = $request->launch;
+        $construction->roadworks_flg = $request->roadworks_flg;
+        $construction->progress_id = $request->progress_id;
+        $construction->save();
+
+        return view('construction.store');
     }
 
     /**
