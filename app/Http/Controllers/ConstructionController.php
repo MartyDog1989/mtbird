@@ -15,10 +15,10 @@ class ConstructionController extends Controller
      */
     public function index()
     {
-        //
         $constructions = DB::table('constructions')
-                            ->leftJoin('progresses', 'constructions.id', '=', 'progresses.id')
-                            ->get();
+                         ->orderBy('id', 'desc')
+                         ->paginate(config('const.pages')); // 定数
+
         return view('construction.index', ['constructions' => $constructions]);
     }
 
@@ -46,7 +46,6 @@ class ConstructionController extends Controller
         $construction->personnel = $request->personnel;
         $construction->launch = $request->launch;
         $construction->roadworks_flg = $request->roadworks_flg;
-        $construction->progress_id = $request->progress_id;
         $construction->save();
 
         return view('construction.store');
@@ -60,7 +59,8 @@ class ConstructionController extends Controller
      */
     public function show($id)
     {
-        //
+        $construction = Construction::find($id);
+        return view('construction.show', ['construction' => $construction]);
     }
 
     /**
@@ -71,7 +71,8 @@ class ConstructionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $construction = Construction::find($id);
+        return view('construction.edit', ['construction' => $construction]);
     }
 
     /**
@@ -83,7 +84,29 @@ class ConstructionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $construction = Construction::find($request->id);
+        $construction->city = $request->city;
+        $construction->address = $request->address;
+        $construction->personnel = $request->personnel;
+        $construction->launch = $request->launch;
+        $construction->roadworks_flg = $request->roadworks_flg;
+        $construction->inpuest_date = $request->inpuest_date;
+        $construction->u_requested_date = $request->u_requested_date;
+        $construction->d_requested_date = $request->d_requested_date;
+        $construction->u_occupancy_date = $request->u_occupancy_date;
+        $construction->d_occupancy_date = $request->d_occupancy_date;
+        $construction->u_permission_date = $request->u_permission_date;
+        $construction->d_permission_date = $request->d_permission_date;
+        $construction->u_roadworks_date = $request->u_roadworks_date;
+        $construction->d_roadworks_date = $request->d_roadworks_date;
+        $construction->u_inspected_date = $request->u_inspected_date;
+        $construction->d_inspected_date = $request->d_inspected_date;
+        $construction->u_picture_date = $request->u_picture_date;
+        $construction->d_picture_date = $request->d_picture_date;
+        $construction->demand = $request->demand_flg;
+        $construction->save();   
+
+        return view('construction.update');
     }
 
     /**
@@ -94,6 +117,31 @@ class ConstructionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $construction = Construction::find($id);
+        $construction->delete();
+        return view('construction.destroy');
+    }
+
+    /**
+     * 市町村ごとに表示する
+     * 
+     * @param str $city
+     * @return \Illuminate\Http\Response
+     */
+    public function cityList(Request $request)
+    {
+        $constructions = Construction::getListByCity($request->city);
+        return view('construction.index', ['constructions' => $constructions]);
+    }
+    
+    /**
+     * 受注現場を表示する
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function launchList(Request $request)
+    {
+        $constructions = Construction::getListByLaunch($request->launch);
+        return view('construction.index', ['constructions' => $constructions]);
     }
 }

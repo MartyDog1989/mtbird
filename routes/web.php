@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ConstructionController@index'); 
 
 Route::resource('constructions', 'ConstructionController');
+Route::get('list/{city}', 'ConstructionController@cityList');
+Route::get('list/launch/{launch}', 'ConstructionController@launchList');

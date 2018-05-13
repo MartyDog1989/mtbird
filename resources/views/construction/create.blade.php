@@ -19,18 +19,14 @@
         <div class="form-group">
             受注状況
             <input type="radio" class="form-control" id="launchCheck" name="launch" value="1">受注
-            <input type="radio" class="form-control" id="launchUnCheck" name="launch" value="0">未受注
+            <input type="radio" class="form-control" id="launchUnCheck" name="launch" value="0" checked="checked">未受注
         </div>
         <div class="form-group">
             <p>道路工事の有無</p>
             <label for="roadworksflgCheck">有</label>
             <input type="radio" class="form-control" id="roadworksFlgCheck" name="roadworks_flg" value="1">
             <label for="roadworksflgUnCheck">無</label>
-            <input type="radio" class="form-control" id="roadworksFlgUnCheck" name="roadworks_flg" value="0">
-        </div>
-        <div class="form-group">
-            <label for="progressIdInput">進行ID</label>
-            <input type="text" class="form-control" id="progressIdInput" name="progress_id">
+            <input type="radio" class="form-control" id="roadworksFlgUnCheck" name="roadworks_flg" value="0" checked="checked">
         </div>
         <button type="submit" class="btn btn-primary">新規追加</button>
         <a href="{{ action('ConstructionController@index') }}" class="btn btn-primary">一覧に戻る</a>
