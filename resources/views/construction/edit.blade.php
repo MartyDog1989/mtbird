@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="addressInput" name="address" value="{{ $construction->address }}">
         </div> 
         <div class="form-group">
-            <label for="personnelInput">担当者</label>
+            <label for="personnelInput">元請</label>
             <input type="text" class="form-control" id="personnelInput" name="personnel" value="{{ $construction->personnel }}">
         </div>
         <div class="form-group">
