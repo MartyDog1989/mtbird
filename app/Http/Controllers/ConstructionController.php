@@ -82,7 +82,7 @@ class ConstructionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateFundamental(Request $request, $id)
     {
         $construction = Construction::find($request->id);
         $construction->city = $request->city;
@@ -90,6 +90,24 @@ class ConstructionController extends Controller
         $construction->personnel = $request->personnel;
         $construction->launch = $request->launch;
         $construction->roadworks_flg = $request->roadworks_flg;
+        if ($request->city == '神戸市') {
+            $construction->kobe_betterment_flg = $request->kobe_betterment_flg;
+        }
+        $construction->save();   
+
+        return view('construction.update');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $construction = Construction::find($request->id);
         $construction->inpuest_date = $request->inpuest_date;
         $construction->u_requested_date = $request->u_requested_date;
         $construction->d_requested_date = $request->d_requested_date;
@@ -103,12 +121,16 @@ class ConstructionController extends Controller
         $construction->d_inspected_date = $request->d_inspected_date;
         $construction->u_picture_date = $request->u_picture_date;
         $construction->d_picture_date = $request->d_picture_date;
+        $construction->kobe_inquest_req_date = $request->kobe_inquest_req_date;
+        $construction->kobe_bonus = $request->kobe_bonus;
+        $construction->kobe_better_req_date = $request->kobe_better_req_date;
+        $construction->kobe_pic_date = $request->kobe_pic_date;
+        $construction->kobe_demand_date = $request->kobe_demand_date;
         $construction->demand = $request->demand_flg;
         $construction->save();   
 
         return view('construction.update');
     }
-
     /**
      * Remove the specified resource from storage.
      *

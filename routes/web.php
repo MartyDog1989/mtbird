@@ -16,3 +16,4 @@ Route::get('/', 'ConstructionController@index');
 Route::resource('constructions', 'ConstructionController');
 Route::get('list/{city}', 'ConstructionController@cityList');
 Route::get('list/launch/{launch}', 'ConstructionController@launchList');
+Route::put('update_fundamental/{id}', 'ConstructionController@updateFundamental');

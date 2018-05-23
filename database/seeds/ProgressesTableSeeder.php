@@ -15,6 +15,7 @@ class ProgressesTableSeeder extends Seeder
     {
         //
         $progress = new Progress;
+        $progress->construction_id = 1;
         $progress->inpuest_date = date('2017/11/20');
         $progress->u_requested_date = date('2017/11/25');
         $progress->d_requested_date = date('2017/11/25');
