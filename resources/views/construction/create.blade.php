@@ -28,7 +28,7 @@
             <label for="roadworksflgUnCheck">無</label>
             <input type="radio" class="form-control" id="roadworksFlgUnCheck" name="roadworks_flg" value="0" checked="checked">
         </div>
-        <button type="submit" class="btn btn-primary">新規追加</button>
+        <button type="submit" class="btn btn-primary">進捗情報登録へ</button>
         <a href="{{ action('ConstructionController@index') }}" class="btn btn-primary">一覧に戻る</a>
     </form>
 @endsection

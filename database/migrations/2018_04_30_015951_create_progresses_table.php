@@ -16,7 +16,8 @@ class CreateProgressesTable extends Migration
         Schema::create('progresses', function (Blueprint $table) {
             $table->engine = 'InnoDB'; // ストレージエンジンの指定
             $table->increments('id');
-            $table->foreign('construction_id')->references('id')->on('constructions');
+            $table->integer('construction_id')->unsigned();
+            // $table->foreign('construction_id')->references('id')->on('constructions');
             $table->date('inpuest_date')->nullable(); // 調査日
             $table->date('u_requested_date')->nullable(); // 上水申請日
             $table->date('d_requested_date')->nullable(); // 下水申請日

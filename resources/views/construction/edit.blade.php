@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>{{ $construction->city }}{{ $construction->address }}</h1>
-    <form action="{{ action('ConstructionController@updateFundamental', $construction) }}" method="post">
+    <form action="{{ action('ConstructionController@update', $construction->id) }}" method="post">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
         <input type="hidden" name="id" value="{{ $construction->id }}">

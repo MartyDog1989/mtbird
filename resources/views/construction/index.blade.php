@@ -19,7 +19,7 @@
                 <h6 class="card-title">元請：{{$construction->personnel}}</h6>
                 <h6 class="card-title">申請日：{{$construction->u_requested_date}}</h6>
                 <a href="{{ route('constructions.edit', [$construction->id]) }}" class="card-link">基本情報更新</a>
-                <a href="{{ route('constructions.show', [$construction->id]) }}" class="card-link">進捗参照または削除</a>
+                <a href="{{ route('progress.edit', [$construction->id]) }}" class="card-link">進捗情報更新</a>
             </div>
         </div>
     @endforeach
