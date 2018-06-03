@@ -18,26 +18,40 @@
             <label for="personnelInput">元請</label>
             <input type="text" class="form-control" id="personnelInput" name="personnel" value="{{ $construction->personnel }}">
         </div>
-        <div class="form-group">
-            受注状況
-            <input type="radio" class="form-control" id="launchCheck" name="launch" value="1" {{ $construction->launch == 1 ? 'checked' : null }}>受注
-            <input type="radio" class="form-control" id="launchUnCheck" name="launch" value="0" {{ $construction->launch == 0 ? 'checked' : null }}>未受注
+        <p>受注状況</p>
+        <div class="radio">
+            <label>
+                <input type="radio" id="launchCheck" name="launch" value="1" {{ $construction->launch == 1 ? 'checked' : null }}>受注
+            </label>
         </div>
-        <div class="form-group">
-            <p>道路工事の有無</p>
-            <label for="roadworksflgCheck">有</label>
-            <input type="radio" class="form-control" id="roadworksFlgCheck" name="roadworks_flg" value="1" {{ $construction->roadworks_flg == 1 ? 'checked' : null }}>
-            <label for="roadworksflgUnCheck">無</label>
-            <input type="radio" class="form-control" id="roadworksFlgUnCheck" name="roadworks_flg" value="0" {{ $construction->roadworks_flg == 0 ? 'checked' : null }}>
+        <div class="radio">
+            <label>
+                <input type="radio" id="launchUnCheck" name="launch" value="0" {{ $construction->launch == 0 ? 'checked' : null }}>未受注
+            </label>
+        </div>
+        <p>道路工事の有無</p>
+        <div class="radio">
+            <label>
+                <input type="radio" id="roadworksFlgCheck" name="roadworks_flg" value="1" {{ $construction->roadworks_flg == 1 ? 'checked' : null }}>有
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" id="roadworksFlgUnCheck" name="roadworks_flg" value="0" {{ $construction->roadworks_flg == 0 ? 'checked' : null }}>無
+            </label>
         </div>
 
         @if ($construction->city == '神戸市')
-            <div class="form-group">
-                <p>改善工事の有無</p>
-                <label for="kobeBettermentFlgCheck">有</label>
-                <input type="radio" class="form-control" id="kobeBettermentFlgCheck" name="kobe_betterment_flg" value="1" {{ $construction->kobe_betterment_flg == 1 ? 'checked' : null }}>
-                <label for="kobeBettermentFlgUnCheck">無</label>
-                <input type="radio" class="form-control" id="kobeBettermentFlgUnCheck" name="kobe_betterment_flg" value="0" {{ $construction->kobe_betterment_flg == 0 ? 'checked' : null }}>
+            <p>改善工事の有無</p>
+            <div class="radio">
+                <label>
+                    <input type="radio" id="kobeBettermentFlgCheck" name="kobe_betterment_flg" value="1" {{ $construction->kobe_betterment_flg == 1 ? 'checked' : null }}>有
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" id="kobeBettermentFlgUnCheck" name="kobe_betterment_flg" value="0" {{ $construction->kobe_betterment_flg == 0 ? 'checked' : null }}>無
+                </label>
             </div>
         @endif
 

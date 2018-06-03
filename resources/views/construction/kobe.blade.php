@@ -18,3 +18,4 @@
     <label for="kobeDemandDate">改善工事請求書提出日</label>
     <input type="date" class="form-control" id="kobeDemandDate" name="kobe_demand_date" value="{{ $construction->kobe_demand_date }}">
 </div>
+<br/>

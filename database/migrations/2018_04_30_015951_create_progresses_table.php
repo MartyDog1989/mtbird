@@ -18,7 +18,7 @@ class CreateProgressesTable extends Migration
             $table->increments('id');
             $table->integer('construction_id')->unsigned();
             // $table->foreign('construction_id')->references('id')->on('constructions');
-            $table->date('inpuest_date')->nullable(); // 調査日
+            $table->date('inquest_date')->nullable(); // 調査日
             $table->date('u_requested_date')->nullable(); // 上水申請日
             $table->date('d_requested_date')->nullable(); // 下水申請日
             $table->date('u_occupancy_date')->nullable(); // 上水道路占用申請日

@@ -17,3 +17,6 @@ Route::resource('constructions', 'ConstructionController');
 Route::resource('progress', 'ProgressController');
 Route::get('list/{city}', 'ConstructionController@cityList');
 Route::get('list/launch/{launch}', 'ConstructionController@launchList');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
