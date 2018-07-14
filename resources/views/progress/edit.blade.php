@@ -11,7 +11,7 @@
         @endif
         <div class="form-group">
             <label>調査日</label>
-            <input type="date" class="form-control" id="inpuestDateInput" name="inpuest_date" value="{{ $progress->inquest_date }}">
+            <input type="date" class="form-control" id="inquestDateInput" name="inquest_date" value="{{ $progress->inquest_date }}">
         </div>
         <br/>
         <div class="form-group">

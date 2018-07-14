@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="row" style="padding:10px 0 0 0">
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <a href="{{ action('ConstructionController@index') }}" class="btn btn-primary">全市町村</a>
                 @foreach (config('const.main_cities') as $city)
                     <a href="{{ action('ConstructionController@cityList', $city) }}" class="btn btn-primary">{{ $city }}</a>
