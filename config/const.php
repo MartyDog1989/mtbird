@@ -15,6 +15,7 @@ return array(
         '豊中市',
         '茨木市',
         '明石市',
-    ]
+    ],
+    'form-width' => 'col-sm-6',
 );
 ?>

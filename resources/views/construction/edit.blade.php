@@ -6,17 +6,23 @@
     {{ csrf_field() }}
     {{ method_field('PUT') }}
         <input type="hidden" name="id" value="{{ $construction->id }}">
-        <div class="form-group">
-            <label for="cityInput">市町村</label>
-            <input type="text" class="form-control" id="cityInput" name="city" value="{{ $construction->city }}">
+        <div class="form-group row">
+            <div class="{{ config('const.form-width') }}">
+                <label for="cityInput">市町村</label>
+                <input type="text" class="form-control" id="cityInput" name="city" value="{{ $construction->city }}">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="addressInput">町名、番地</label>
-            <input type="text" class="form-control" id="addressInput" name="address" value="{{ $construction->address }}">
+        <div class="form-group row">
+            <div class="{{ config('const.form-width') }}">
+                <label for="addressInput">町名、番地</label>
+                <input type="text" class="form-control" id="addressInput" name="address" value="{{ $construction->address }}">
+            </div>
         </div> 
-        <div class="form-group">
-            <label for="personnelInput">元請</label>
-            <input type="text" class="form-control" id="personnelInput" name="personnel" value="{{ $construction->personnel }}">
+        <div class="form-group row">
+            <div class="{{ config('const.form-width') }}">
+                <label for="personnelInput">元請</label>
+                <input type="text" class="form-control" id="personnelInput" name="personnel" value="{{ $construction->personnel }}">
+            </div>
         </div>
         <p>受注状況</p>
         <div class="radio">

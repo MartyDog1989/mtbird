@@ -38,7 +38,7 @@ class ProgressController extends Controller
     {
         $progress = new Progress;
         $progress->construction_id = $request->construction_id;
-        $progress->inpuest_date = $request->inpuest_date;
+        $progress->inquest_date = $request->inquest_date;
         $progress->u_requested_date = $request->u_requested_date;
         $progress->d_requested_date = $request->d_requested_date;
         $progress->u_occupancy_date = $request->u_occupancy_date;
