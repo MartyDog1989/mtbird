@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <h1>現場新規追加</h1>
     <form action="{{ route('constructions.store') }}" method="post">
     {{ csrf_field() }}
@@ -47,4 +48,5 @@
         <button type="submit" class="btn btn-primary">進捗情報登録へ</button>
         <a href="{{ action('ConstructionController@index') }}" class="btn btn-primary">一覧に戻る</a>
     </form>
+</div>
 @endsection

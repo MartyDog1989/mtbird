@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <h1>{{ $construction->city }}{{ $construction->address }}</h1>
     <form action="{{ action('ProgressController@update', $construction) }}" method="post">
     {{ csrf_field() }}
@@ -91,4 +92,5 @@
         <button type="submit" class="btn btn-primary">更新</button>
         <a href="{{ action('ConstructionController@index') }}" class="btn btn-primary">一覧に戻る</a>
     </form>
+</div>
 @endsection

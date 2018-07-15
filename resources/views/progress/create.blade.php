@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <form action="{{ action('ProgressController@store') }}" method="post">
     {{ csrf_field() }}
-        <input type="text" name="construction_id" value="{{ $construction->id }}" />
-        <div class="form-group">
-            <label for="inpuestDateInput">調査日</label>
-            <input type="date" class="form-control" id="inquestDateInput" name="inquest_date">
+        <input type="hidden" name="construction_id" value="{{ $construction->id }}" />
+        <div class="form-group row">
+            <div class="{{ config('const.form-width') }}">
+                <label for="inpuestDateInput">調査日</label>
+                <input type="date" class="form-control" id="inquestDateInput" name="inquest_date">
+            </div>
         </div>
         <div class="form-group row">
             <div class="{{ config('const.form-width') }}">
@@ -68,14 +71,18 @@
                 <input type="date" class="form-control" id="dPictureDateInput" name="d_picture_date">
             </div>
         </div>
-        <div class="form-group">
-            <div>請求</div>
-            <label for="demandflgCheck">請求済</label>
-            <input type="radio" class="form-control" id="demandFlgCheck" name="demand_flg" value="1">
-            <label for="demandflgUnCheck">未請求</label>
-            <input type="radio" class="form-control" id="demandFlgUnCheck" name="demand_flg" value="0" checked="checked">
+        <div>請求</div>
+        <div class="radio">
+            <label>
+                <input type="radio" id="demandFlgCheck" name="demand_flg" value="1">請求済
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" id="demandFlgUnCheck" name="demand_flg" value="0" checked="checked">未請求
+            </label>
         </div>
         <button type="submit" class="btn btn-primary">更新</button>
-        <a href="{{ action('ConstructionController@index') }}" class="btn btn-primary">一覧に戻る</a>
     </form>
+</div>
 @endsection

@@ -16,6 +16,6 @@ return array(
         '茨木市',
         '明石市',
     ],
-    'form-width' => 'col-sm-6',
+    'form-width' => 'col-sm-4',
 );
 ?>

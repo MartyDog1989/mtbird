@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>現場一覧</h1>
     <div class="container">
+    <h1>現場一覧</h1>
         <div class="row">
             <div class="col-md-4">
                 <a href="{{ route('constructions.create') }}" class="btn btn-primary">新規追加</a>
