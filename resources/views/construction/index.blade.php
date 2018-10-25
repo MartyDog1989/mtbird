@@ -7,6 +7,7 @@
             <div class="col-md-4">
                 <a href="{{ route('constructions.create') }}" class="btn btn-primary">新規追加</a>
                 <a href="{{ action('ConstructionController@launchList', '1') }}" class="btn btn-primary">受注現場</a>
+                <a href="{{ action('ConstructionController@roadworksList', '1') }}" class="btn btn-primary">道路工事現場</a>
             </div>
         </div>
         <div class="row" style="padding:10px 0 0 0">
@@ -33,6 +34,9 @@
                     <tr>
                         <th>元請</th>
                         <th>調査日</th>
+                        @if ($construction->city == '神戸市')
+                        <th>改善工事<th>
+                        @endif
                         <th>水道申請日</th>
                         <th>下水申請日</th>
                     </tr>
@@ -41,6 +45,13 @@
                     <tr>
                         <td>{{$construction->personnel}}</td>
                         <td>{{$construction->inquest_date}}</td>
+                        @if ($construction->city == '神戸市')
+                            @if ($construction->kobe_betterment_flg == 1)
+                            <td class="text-primary">改善工事有り</td>
+                            @else
+                            <td class="text-muted">改善工事無し</td>
+                            @endif
+                        @endif
                         <td>{{$construction->u_requested_date}}</td>
                         <td>{{$construction->d_requested_date}}</td>
                     </tr>

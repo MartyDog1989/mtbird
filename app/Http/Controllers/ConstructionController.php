@@ -145,5 +145,16 @@ class ConstructionController extends Controller
     {
         $constructions = Construction::getListByLaunch($request->launch);
         return view('construction.index', ['constructions' => $constructions]);
+    }   
+    
+    /**
+     * 道路工事現場を表示する
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function roadworksList(Request $request)
+    {
+        $constructions = Construction::getListByRoadworks($request->roadworks_flg);
+        return view('construction.index', ['constructions' => $constructions]);
     }
 }

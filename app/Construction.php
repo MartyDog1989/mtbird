@@ -36,4 +36,16 @@ class Construction extends Model
 
         return $constructions;
     }
+
+    public static function getListByRoadworks($roadworks_flg)
+    {
+        $constructions = DB::table('constructions')
+                         ->leftJoin('progresses',
+                                    'progresses.construction_id', '=', 'constructions.id')
+                         ->where('constructions.roadworks_flg', $roadworks_flg)
+                         ->orderBy('constructions.id', 'desc')
+                         ->paginate(config('const.pages')); // 定数
+
+        return $constructions;
+    }
 }
