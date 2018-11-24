@@ -34,7 +34,7 @@ class ProgressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProgressPost $request)
     {
         $progress = new Progress;
         $progress->construction_id = $request->construction_id;
@@ -97,7 +97,7 @@ class ProgressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProgressPost $request, $id)
     {
         $progress = Progress::find($request->id);
         $progress->inquest_date = $request->inquest_date;

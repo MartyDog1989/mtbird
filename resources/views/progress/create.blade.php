@@ -71,18 +71,22 @@
                 <input type="date" class="form-control" id="dPictureDateInput" name="d_picture_date">
             </div>
         </div>
-        <div>請求</div>
-        <div class="radio">
-            <label>
-                <input type="radio" id="demandFlgCheck" name="demand_flg" value="1">請求済
-            </label>
+        <div class="form-group row">
+            <div>請求</div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio" id="demandFlgCheck" name="demand_flg" value="1">請求済
+                    </label>
+                </div>
+            <div class="radio-inlen">
+                <label>
+                    <input type="radio" id="demandFlgUnCheck" name="demand_flg" value="0" checked="checked">未請求
+                </label>
+            </div>
         </div>
-        <div class="radio">
-            <label>
-                <input type="radio" id="demandFlgUnCheck" name="demand_flg" value="0" checked="checked">未請求
-            </label>
+        <div class="form-group row">
+            <button type="submit" class="btn btn-primary">更新</button>
         </div>
-        <button type="submit" class="btn btn-primary">更新</button>
     </form>
 </div>
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Construction;
 use App\Http\ProgressController;
+use App\Http\Requests\StoreConstructionPost;
 
 class ConstructionController extends Controller
 {
@@ -45,7 +46,7 @@ class ConstructionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreConstructionPost $request)
     {
         $construction = new Construction;
         $construction->city = $request->city;
@@ -95,7 +96,7 @@ class ConstructionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreConstructionPost $request, $id)
     {
         $construction = Construction::find($request->id);
         $construction->city = $request->city;
