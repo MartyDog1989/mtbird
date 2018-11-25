@@ -39,9 +39,7 @@ class StoreConstructionPost extends FormRequest
     public function messages()
     {
         return [
-            'city.required' => '未入力です。',
-            'address.required' => '未入力です。',
-            'personnel.required' => '未入力です。'
+            '*.required' => '未入力です。',
         ];
     }
 }

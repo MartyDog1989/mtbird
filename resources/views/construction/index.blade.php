@@ -26,37 +26,27 @@
         @foreach ($constructions as $construction)
         <div class="panel panel-default">
             <div class="panel-heading">
-                現場住所：{{$construction->city}}{{$construction->address}}
+                現場住所：{{config('const.city_code')[$construction->city]}}{{$construction->address}}
             </div>
             <div class="panel-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>元請</th>
-                        <th>調査日</th>
-                        @if ($construction->city == '神戸市')
-                        <th>改善工事<th>
-                        @endif
-                        <th>水道申請日</th>
-                        <th>下水申請日</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{$construction->personnel}}</td>
-                        <td>{{$construction->inquest_date}}</td>
-                        @if ($construction->city == '神戸市')
-                            @if ($construction->kobe_betterment_flg == 1)
-                            <td class="text-primary">改善工事有り</td>
-                            @else
-                            <td class="text-muted">改善工事無し</td>
-                            @endif
-                        @endif
-                        <td>{{$construction->u_requested_date}}</td>
-                        <td>{{$construction->d_requested_date}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <dl class="dl-horizontal">
+                <dt>元請</dt>
+                <dd>{{$construction->personnel}}</dd>
+                <dt>調査日</dt>
+                <dd>{{$construction->inquest_date}}</dd>
+                @if ($construction->city == array_keys(config('const.city_code'), '神戸市')[0])
+                    <dt>改善工事<dt>
+                    @if ($construction->kobe_betterment_flg == 1)
+                        <dd class="text-primary">改善工事有り</dd>
+                    @else
+                        <dd class="text-muted">改善工事無し</dd>
+                    @endif
+                @endif
+                <dt>水道申請日</dt>
+                <dd>{{$construction->u_requested_date}}</dd>
+                <dt>下水申請日</dt>
+                <dd>{{$construction->d_requested_date}}</dd>
+            </dl>
             </div>
             <div class="panel-footer">
                 <a href="{{ route('constructions.edit', [$construction->id]) }}" class="btn btn-primary">基本情報更新</a>

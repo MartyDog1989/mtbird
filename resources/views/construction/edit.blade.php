@@ -10,7 +10,12 @@
         <div class="form-group row">
             <div class="{{ config('const.form-width') }}">
                 <label for="cityInput">市町村</label>
-                <input type="text" class="form-control" id="cityInput" name="city" value="{{ $construction->city }}">
+                <select class="form-control" name="city" id="cityInput">
+                    @foreach (config('const.main_cities') as $city)
+                        <option value="{{ $loop->iteration }}">{{ $city }}</option>
+                    @endforeach
+                </select>
+                {{ $errors->first('city') }}
             </div>
         </div>
         <div class="form-group row">
@@ -18,6 +23,7 @@
                 <label for="addressInput">町名、番地</label>
                 <input type="text" class="form-control" id="addressInput"
                     name="address" value="{{ $construction->address }}">
+                {{ $errors->first('address') }}
             </div>
         </div> 
         <div class="form-group row">
@@ -25,6 +31,7 @@
                 <label for="personnelInput">元請</label>
                 <input type="text" class="form-control" id="personnelInput"
                     name="personnel" value="{{ $construction->personnel }}">
+                {{ $errors->first('personnel') }}
             </div>
         </div>
         <div class="form-group">
@@ -58,7 +65,7 @@
             </div>
         </div>
 
-        @if ($construction->city == '神戸市')
+        @if ($construction->city == array_keys(config('const.city_code'), '神戸市')[0])
             <div class="form-group">
                 <p>改善工事の有無</p>
                 <div class="radio-inline">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Progress;
 use App\Construction;
+use App\Http\Requests\StoreProgressPost;
 
 class ProgressController extends Controller
 {
