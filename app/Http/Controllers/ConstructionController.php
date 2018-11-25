@@ -104,7 +104,7 @@ class ConstructionController extends Controller
         $construction->personnel = $request->personnel;
         $construction->launch = $request->launch;
         $construction->roadworks_flg = $request->roadworks_flg;
-        if ($request->city == '神戸市') {
+        if ($request->city == array_keys(config('const.city_code'), '神戸市')[0]) {
             $construction->kobe_betterment_flg = $request->kobe_betterment_flg;
         }
         $construction->save();   
