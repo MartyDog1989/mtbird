@@ -8,11 +8,8 @@
         <div class="form-group row">
             <div class="{{ config('const.form-width') }}">
                 <label for="cityInput">市町村</label>
-                    <select class="form-control" name="city" id="cityInput">
-                        @foreach (config('const.main_cities') as $city)
-                            <option value="{{ $loop->iteration }}">{{ $city }}</option>
-                        @endforeach
-                    </select>
+                {{ Form::select('city', config('const.city_code'), null,
+                    ['class' => 'form-control', 'id' => 'cityInput']) }}
                 {{ $errors->first('city') }}
             </div>
         </div>

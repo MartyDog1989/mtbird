@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{ $construction->city }}{{ $construction->address }}</h1>
+    <h1>{{ config('const.city_code')[$construction->city] }}{{ $construction->address }}</h1>
     <form action="{{ route('constructions.update', [$construction]) }}" method="post">
     {{ csrf_field() }}
     {{ method_field('PUT') }}

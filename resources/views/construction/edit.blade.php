@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>{{ $construction->city }}{{ $construction->address }}</h1>
+    <h1>{{ config('const.city_code')[$construction->city] }}{{ $construction->address }}</h1>
     <form action="{{ action('ConstructionController@update', $construction->id) }}" method="post">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
@@ -10,11 +10,8 @@
         <div class="form-group row">
             <div class="{{ config('const.form-width') }}">
                 <label for="cityInput">市町村</label>
-                <select class="form-control" name="city" id="cityInput">
-                    @foreach (config('const.main_cities') as $city)
-                        <option value="{{ $loop->iteration }}">{{ $city }}</option>
-                    @endforeach
-                </select>
+                {{ Form::select('city', config('const.city_code'), $construction->city,
+                    ['class' => 'form-control', 'id' => 'cityInput']) }}
                 {{ $errors->first('city') }}
             </div>
         </div>
