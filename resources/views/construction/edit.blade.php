@@ -11,7 +11,10 @@
             <div class="{{ config('const.form-width') }}">
                 <label for="cityInput">市町村</label>
                 {{ Form::select('city', config('const.city_code'), $construction->city,
-                    ['class' => 'form-control', 'id' => 'cityInput']) }}
+                    ['class' => 'form-control',
+                     'id' => 'cityInput',
+                     'value' => old('city')]
+                ) }}
                 {{ $errors->first('city') }}
             </div>
         </div>
@@ -19,7 +22,7 @@
             <div class="{{ config('const.form-width') }}">
                 <label for="addressInput">町名、番地</label>
                 <input type="text" class="form-control" id="addressInput"
-                    name="address" value="{{ $construction->address }}">
+                    name="address" value="{{ old('address', $construction->address) }}">
                 {{ $errors->first('address') }}
             </div>
         </div> 
@@ -27,7 +30,7 @@
             <div class="{{ config('const.form-width') }}">
                 <label for="personnelInput">元請</label>
                 <input type="text" class="form-control" id="personnelInput"
-                    name="personnel" value="{{ $construction->personnel }}">
+                    name="personnel" value="{{ old('personnel', $construction->personnel) }}">
                 {{ $errors->first('personnel') }}
             </div>
         </div>
@@ -36,13 +39,13 @@
             <div class="radio-inline">
                 <label>
                     <input type="radio" id="launchCheck" name="launch"
-                        value="1" {{ $construction->launch == 1 ? 'checked' : null }}>受注
+                        value="1" {{ old('launch', $construction->launch) == 1 ? 'checked' : '' }}>受注
                 </label>
             </div>
             <div class="radio-inline">
                 <label>
                     <input type="radio" id="launchUnCheck" name="launch"
-                        value="0" {{ $construction->launch == 0 ? 'checked' : null }}>未受注
+                        value="0" {{ old('launch', $construction->launch) == 0 ? 'checked' : '' }}>未受注
                 </label>
             </div>
         </div>
@@ -50,14 +53,14 @@
             <p>道路工事の有無</p>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" id="roadworksFlgCheck" name="roadworks_flg"
-                        value="1" {{ $construction->roadworks_flg == 1 ? 'checked' : null }}>有
+                    <input type="radio" id="roadworksFlgCheck" name="roadworks_flg" value="1"
+                        {{ old('roadworks_flg', $construction->roadworks_flg) == 1 ? 'checked' : null }}>有
                 </label>
             </div>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" id="roadworksFlgUnCheck" name="roadworks_flg"
-                        value="0" {{ $construction->roadworks_flg == 0 ? 'checked' : null }}>無
+                    <input type="radio" id="roadworksFlgUnCheck" name="roadworks_flg" value="0"
+                        {{ old('roadworks_flg', $construction->roadworks_flg) == 0 ? 'checked' : null }}>無
                 </label>
             </div>
         </div>

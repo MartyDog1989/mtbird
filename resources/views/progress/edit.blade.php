@@ -109,13 +109,13 @@
             <div class="radio-inline">
                 <label>
                     <input type="radio" id="demandFlgCheck" name="demand_flg"
-                        value="1" {{ $progress->demand == 1 ? 'checked' : null }}>請求済
+                        value="1" {{ old('demand_flg', $progress->demand) == 1 ? 'checked' : '' }}>請求済
                 </label>
             </div>
             <div class="radio-inline">
                 <label>
                     <input type="radio" id="demandFlgUnCheck" name="demand_flg"
-                        value="0" {{ $progress->demand == 0 ? 'checked' : null }}>未請求
+                        value="0" {{ old('demand_flg', $progress->demand) == 0 ? 'checked' : null }}>未請求
                 </label>
             </div>
         </div>
