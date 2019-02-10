@@ -38,14 +38,14 @@
             <p>受注状況</p>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" id="launchCheck" name="launch"
-                        value="1" {{ old('launch', $construction->launch) == 1 ? 'checked' : '' }}>受注
+                    {{ Form::radio('launch', '1', old('launch') == '1' ? true : '', [
+                        'id' => 'launchCheck']) }}受注
                 </label>
             </div>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" id="launchUnCheck" name="launch"
-                        value="0" {{ old('launch', $construction->launch) == 0 ? 'checked' : '' }}>未受注
+                    {{ Form::radio('launch', '0', old('launch', '0') == '0' ? true : '', [
+                        'id' => 'launchUnCheck']) }}未受注
                 </label>
             </div>
         </div>
@@ -53,14 +53,14 @@
             <p>道路工事の有無</p>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" id="roadworksFlgCheck" name="roadworks_flg" value="1"
-                        {{ old('roadworks_flg', $construction->roadworks_flg) == 1 ? 'checked' : null }}>有
+                    {{ Form::radio('roadworks_flg', '1', old('roadworks_flg') == '1' ? true : '', [
+                        'id' => 'roadworksFlgCheck']) }}有
                 </label>
             </div>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" id="roadworksFlgUnCheck" name="roadworks_flg" value="0"
-                        {{ old('roadworks_flg', $construction->roadworks_flg) == 0 ? 'checked' : null }}>無
+                    {{ Form::radio('roadworks_flg', '0', old('roadworks_flg', '0') == '0' ? true : '', [
+                        'id' => 'roadworksFlgUnCheck']) }}無
                 </label>
             </div>
         </div>
@@ -70,14 +70,14 @@
                 <p>改善工事の有無</p>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" id="kobeBettermentFlgCheck" name="kobe_betterment_flg"
-                            value="1" {{ $construction->kobe_betterment_flg == 1 ? 'checked' : null }}>有
+                        {{ Form::radio('kobe_betterment_flg', '1', old('kobe_betterment_flg') == '1' ? true : '', [
+                            'id' => 'kobeBettermentFlgCheck']) }}有
                     </label>
                 </div>
                 <div class="radio-inline">
                     <label>
-                        <input type="radio" id="kobeBettermentFlgUnCheck" name="kobe_betterment_flg"
-                            value="0" {{ $construction->kobe_betterment_flg == 0 ? 'checked' : null }}>無
+                        {{ Form::radio('kobe_betterment_flg', '0', old('kobe_betterment_flg', '0') == '0' ? true : '', [
+                            'id' => 'kobeBettermentFlgUnCheck']) }}
                     </label>
                 </div>
             </div>
