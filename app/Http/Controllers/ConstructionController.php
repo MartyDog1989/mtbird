@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Construction;
 use App\Http\ProgressController;
 use App\Http\Requests\StoreConstructionPost;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx as XlsxWriter;
 
 class ConstructionController extends Controller
 {
@@ -21,11 +23,7 @@ class ConstructionController extends Controller
      */
     public function index()
     {
-        $constructions = DB::table('constructions')
-                         ->leftJoin('progresses',
-                                    'progresses.construction_id', '=', 'constructions.id')
-                         ->orderBy('constructions.id', 'desc')
-                         ->paginate(config('const.pages')); // 定数
+        $constructions = $this->geConstructiontList();
 
         return view('construction.index', ['constructions' => $constructions]);
     }
@@ -126,6 +124,20 @@ class ConstructionController extends Controller
     }
 
     /**
+     * 全現場を取得する
+     */
+    public function getConstructionList()
+    {
+        $constructions = DB::table('constructions')
+                         ->leftJoin('progresses',
+                                    'progresses.construction_id', '=', 'constructions.id')
+                         ->orderBy('constructions.id', 'desc')
+                         ->paginate(config('const.pages')); // 定数
+
+        return $constructions;
+    }
+
+    /**
      * 市町村ごとに表示する
      * 
      * @param str $city
@@ -157,5 +169,38 @@ class ConstructionController extends Controller
     {
         $constructions = Construction::getListByRoadworks($request->roadworks_flg);
         return view('construction.index', ['constructions' => $constructions]);
+    }
+
+    /**
+     * Excelファイル出力
+     */
+    public function outputExcel()
+    {
+        // エクセル
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'test');
+
+        $filePath = './excel/test.xlsx';
+        $fileName = 'テスト.xlsx';
+        $writer = new XlsxWriter($spreadsheet);
+        $writer->save($filePath);
+        $headers = ['Content-Type' => 'test/xlsx'];
+
+        // このresponse()は何？
+        return response()->download($filePath, $fileName, $headers);
+    }
+
+    /**
+     * CSVファイル出力
+     */
+    public function outputCsv()
+    {
+        // CSV
+        // 出力データを取得する
+        $constructions = $this->getConstructionList();
+        //　CSVファイルを作成する
+        // 作成したCSVファイルに書き込む
+        // CSVファイルをダウンロードする
     }
 }

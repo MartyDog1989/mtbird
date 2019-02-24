@@ -8,6 +8,7 @@
                 <a href="{{ route('constructions.create') }}" class="btn btn-primary">新規追加</a>
                 <a href="{{ action('ConstructionController@launchList', '1') }}" class="btn btn-primary">受注現場</a>
                 <a href="{{ action('ConstructionController@roadworksList', '1') }}" class="btn btn-primary">道路工事現場</a>
+                <a href="{{ action('ConstructionController@outputExcel') }}" class="btn btn-primary">Excel</a>
             </div>
         </div>
         <div class="row" style="padding:10px 0 0 0">
