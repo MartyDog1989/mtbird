@@ -23,7 +23,7 @@ class ConstructionController extends Controller
      */
     public function index()
     {
-        $constructions = $this->geConstructiontList();
+        $constructions = $this->getConstructionList();
 
         return view('construction.index', ['constructions' => $constructions]);
     }
